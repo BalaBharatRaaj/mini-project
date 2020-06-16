@@ -13,6 +13,12 @@ typedef struct flood_system
     double init_height;
 }m;
 
+int capacity(m dam);
+double calculate(m dam, double shut_height);
+int decision(m dam, double flow_out);
+void cond(int check, int flag, int y);
+void file_print_struct(m dam, int n);	
+
 void breaking_force(d);
 void warning_system(d);
 void file_print_struct(d);
@@ -76,43 +82,37 @@ void file_print(char *a, char *b)
       fprintf(ftr,"\n%s",b);
       fclose(ftr);
 }
-//Calculating the breaking force of the dam and storing it in the file for future reference.
-void breaking_force(d dam)
+//Function to check if the dam capacity is below the threshold capacity
+
+int capacity(m dam)
 {
-    FILE *ftr;
-    ftr=fopen("records.txt","a");
-    char des[30]={"The breaking force is: "};
-    double dam_force= dam.dam_width * dam.dam_height * dam.dam_length * density * acceleration;
-    printf("\n\n\n The breaking force is: %lf\n\n\n",dam_force);
-    fprintf(ftr,"\n\n%s",des);
-    fprintf(ftr," %lf\n\n",dam_force);
-    fclose(ftr);
+    double cap = dam.lat_area*dam.water_level;
+    if(cap>dam.threshold)
+        return 1;
+    else
+        return 0;
 }
 
-//Function to store the entered details of the dam in a file for future reference
-void file_print_struct(m dam, int n)
+//Function to calculate the outward flow of water in the dam
+
+double calculate(m dam, double shut_height)
 {
-    FILE *fptr;
-
-    //Opening the file called 'records'
-    fptr = fopen("records.txt","a");            
-
-    fprintf(fptr, "\t\t\t\t\t\tReport\n\n");
-    fprintf(fptr, "\t\t\t\t\tEarly Warning Flood System\n\n\n");
-
-    fprintf(fptr, "\n\nThe number of dams in the system that are being monitored : %d", n);
-
-    fprintf(fptr, "\n\nThe name of the dam : %s", dam.name);
-    fprintf(fptr, "\n\nThe threshold capacity of the dam in SI units : %lf", dam.threshold);
-    fprintf(fptr, "\n\nThe lateral area of the contact surface in SI units : %lf", dam.lat_area);
-    fprintf(fptr, "\n\nThe inward flow in the dam in SI units : %lf", dam.flow_in);
-    fprintf(fptr, "\n\nThe width of the dam_shutter in SI units : %lf", dam.width);
-    fprintf(fptr, "\n\nThe critical height of the dam in SI units : %lf", dam.init_height);
-    fprintf(fptr, "\n\nThe water level in the dam in SI units : %lf", dam.water_level);
-
-    //Closing the file
-    fclose(fptr);                            
+    double velocity = sqrt((2*g*shut_height));
+    double area = dam.width * shut_height;
+    return (area * velocity);
 }
+
+//Function to check whether the dam is safe from breaking due to the inward flow of water
+
+int decision(m dam, double flow_out)
+{
+    double dh = (dam.flow_in - flow_out)/dam.lat_area;
+    if(dh > dam.init_height)
+        return 1;
+    else
+        return 0;
+}
+
 //Warning System
 void warning_system(d dam)
 {
