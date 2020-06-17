@@ -5,6 +5,7 @@
 #define g 9.8
 
 //Creating a structure variable to store several dam details.
+
 typedef struct flood_system
 {
     char name[30];
@@ -75,9 +76,11 @@ double square_root(double number)
         // (on second iteration = 65)
         // and so on
         temp = sqt;
-
-	sqt = (number / 2*temp)/2;
-        // Then, replace values (256 / 128)
+	
+	// Then, replace values (256 / 2 * 128) / 2 = 65
+	//(on second iteration 34.46923076923077)
+	//and so on
+	sqt = (number / 2*temp)/2;      
     }
     return sqt;
 }
