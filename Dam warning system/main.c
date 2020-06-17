@@ -35,10 +35,28 @@ void protocol_1()
    printf("\n\t\t\tPlease follow the protocols given below immediately:");
    printf("\n");
    printf("\n1. Rise the dam shutters uniformly to allow the free outflow to increase outward velocity of dam");
-   printf("\n2. Evacuate the people who are near the dam for atleast a radius of 40km for rehabilitation purposes from potential inundation areas.");
+   printf("\n2. Evacuate the people who are near the dam for atleast a radius of 40km for" 
+	  "rehabilitation purposes from potential inundation areas.");
    printf("\n3. Immediately open the check dams further ahead to allow the free outward flow of water from the dam");
-   printf("\n4. Make sure there is no water overflowing through the dam crests or large overflow through the channels (piping) incase of embankent erosion");
+   printf("\n4. Make sure there is no water overflowing through the dam crests or "
+	  "large overflow through the channels (piping) incase of embankent erosion");
    printf("\n5. Kindly assume the dam failure is in progress and take the above the steps necessary");
+}
+
+//Creating a function for the protocols to be followed during a signal orange emergency
+
+void protocol_2()
+{
+	printf("\n");
+	printf("\n\t\t\tPlease follow the protocol given below immediately:");
+	printf("\n");
+	printf("\n1. Rise the shutters slowly and fairly allow the outward flow of the water from the dam");
+	printf("\n2. Make sure that the adverse meteorological conditions affect the dam capacity" 
+	       "and the outward flow of the water from the dam further or not");
+	printf("\n3. Open the check dams slowly and fairly to allow the free outward flow of the water from the dam");
+	printf("\n4. Make sure there is no tansverse cracking of the embankment");
+	printf("\n5. Authorities responsible for rescue and relief gear for evacuation of people and property from inundation areas"
+	       "immediately"):
 }
 
 //Creating a function to find the squareroot of a number
@@ -94,6 +112,7 @@ void cond(int check, int flag, int y)
         printf("\nAt time t= %d hours \nSignal = ORANGE", y);
         printf("\n\nThe dam and its surrounding areas are at high risk of flooding."
                "\nSo kindly take the necessary steps required");
+	protocol_2();    
 	    
         fprintf(file, "\nAt time t = %d hours \nSignal = ORANGE", y);
         fprintf(file, "\n\nThe dam and its surrounding areas are at high risk of flooding."
@@ -108,12 +127,14 @@ void cond(int check, int flag, int y)
         file = fopen("records.txt", "a");
 	    
         printf("\nAt time t= %d hours \nSignal = GREEN", y);
-        printf("\n\nThe dam and its surrounding area is safe from flooding now and no need to evacuate the people from neighbouring areas."
+        printf("\n\nThe dam and its surrounding area is safe from flooding now and no need to evacuate the people"
+	       "from neighbouring areas."
                "\nNo need to panic.");
 	    
         fprintf(file, "\nAt time t = %d hours \nSignal = GREEN", y);
-        fprintf(file, "\n\nThe dam and its surrounding area is safe from flooding now and no need to evacuate the people from neighbouring areas"
-        "\nNo need to panic");
+        fprintf(file, "\n\nThe dam and its surrounding area is safe from flooding now and no need to evacuate the people"
+		"from neighbouring areas"
+                "\nNo need to panic");
 	    
         fclose(file);
 	    
@@ -253,9 +274,13 @@ int main()
                     file = fopen("records.txt", "a");           //Opening the file called 'records'
                     
                     printf("\nAt time t = %d hours \nSignal = GREEN", y);
-                    printf("\nThe dam and its surrounding area is safe from flooding now and no need to evacuate the people from neighbouring areas. \nAnd no need to panic.");
+                    printf("\nThe dam and its surrounding area is safe from flooding now and no need to evacuate the people"
+			   "from neighbouring areas."
+			   "\nAnd no need to panic.");
                     fprintf(file, "\nAt time t=%d hours signal=GREEN", y);
-                    fprintf(file, "\nThe dam and its surrounding area is safe from flooding now and no need to evacuate the people from neighbouring areas.And no need to panic");
+                    fprintf(file, "\nThe dam and its surrounding area is safe from flooding now and no need to evacuate the people"
+			    "from neighbouring areas."
+			    "And no need to panic");
                     
                     fclose(file);                               //Closing the file
                     
