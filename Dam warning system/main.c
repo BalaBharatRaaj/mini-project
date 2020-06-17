@@ -20,11 +20,26 @@ typedef struct flood_system
 
 double square_root(double number);
 int capacity(m dam);
+void protocol_1();
+void protocol_2();
 double calculate(m dam, double shut_height);
 int decision(m dam, double flow_out);
 void cond(int check, int flag, int y);
 void file_print_struct(m dam, int n);
 
+//Creating a function for the protocols to be followed during a signal red emergency
+
+void protocol_1()
+{
+   printf("\n");
+   printf("\n\t\t\tPlease follow the protocols given below immediately:");
+   printf("\n");
+   printf("\n1. Rise the dam shutters uniformly to allow the free outflow to increase outward velocity of dam");
+   printf("\n2. Evacuate the people who are near the dam for atleast a radius of 40km for rehabilitation purposes from potential inundation areas.");
+   printf("\n3. Immediately open the check dams further ahead to allow the free outward flow of water from the dam");
+   printf("\n4. Make sure there is no water overflowing through the dam crests or large overflow through the channels (piping) incase of embankent erosion");
+   printf("\n5. Kindly assume the dam failure is in progress and take the above the steps necessary");
+}
 
 //Creating a function to find the squareroot of a number
 double square_root(double number)
@@ -62,8 +77,9 @@ void cond(int check, int flag, int y)
         printf("\nAt time t= %d hours \nSignal = RED", y);
         printf("\n\nAlert!!The dam and its surrounding areas are on the verge of flooding."
                "\nSo kindly evacuate the people from the surrounding areas and move them them to higher grounds until futher adviced.");
+	protocol_1();
 	    
-        fprintf(file, "\nAt time t=%d hours signal=RED", y);
+        fprintf(file, "\nAt time t=%d hours \nSignal=RED", y);
         fprintf(file, "\nAlert!!The dam and its surrounding areas are on the verge of flooding."
                 "\nSo kindly evacuate the people from the surrounding areas and move them them to higher grounds until futher adviced.");
 	    
