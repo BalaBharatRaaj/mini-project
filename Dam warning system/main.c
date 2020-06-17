@@ -34,12 +34,12 @@ void protocol_1()
    printf("\n");
    printf("\n\t\t\tPlease follow the protocols given below immediately:");
    printf("\n");
-   printf("\n1. Rise the dam shutters uniformly to allow the free outflow to increase outward velocity of dam");
-   printf("\n2. Evacuate the people who are near the dam for atleast a radius of 40km for" 
-	  "rehabilitation purposes from potential inundation areas.");
-   printf("\n3. Immediately open the check dams further ahead to allow the free outward flow of water from the dam");
+   printf("\n1. Rise the dam shutters uniformly to allow the free outflow to increase outward velocity of dam ");
+   printf("\n2. Evacuate the people who are near the dam for at least a radius of 40 km for "
+	      "rehabilitation purposes from potential inundation areas.");
+   printf("\n3. Immediately open the check dams further ahead to allow the free outward flow of water from the dam ");
    printf("\n4. Make sure there is no water overflowing through the dam crests or "
-	  "large overflow through the channels (piping) incase of embankent erosion");
+	      "large overflow through the channels (piping) in case of embankment erosion");
    printf("\n5. Kindly assume the dam failure is in progress and take the above the steps necessary");
 }
 
@@ -51,15 +51,15 @@ void protocol_2()
 	printf("\n\t\t\tPlease follow the protocol given below immediately:");
 	printf("\n");
 	printf("\n1. Rise the shutters slowly and fairly allow the outward flow of the water from the dam");
-	printf("\n2. Make sure that the adverse meteorological conditions affect the dam capacity" 
+	printf("\n2. Make sure that the adverse meteorological conditions affect the dam capacity "
 	       "and the outward flow of the water from the dam further or not");
 	printf("\n3. Open the check dams slowly and fairly to allow the free outward flow of the water from the dam");
-	printf("\n4. Make sure there is no tansverse cracking of the embankment");
-	printf("\n5. Authorities responsible for rescue and relief gear for evacuation of people and property from inundation areas"
-	       "immediately"):
+	printf("\n4. Make sure there is no transverse cracking of the embankment");
+	printf("\n5. Authorities responsible for rescue and relief gear for evacuation of people and property from inundation areas "
+	       "immediately");
 }
 
-//Creating a function to find the squareroot of a number
+//Creating a function to find the square root of a number
 double square_root(double number)
 {
     double temp, sqt;
@@ -75,71 +75,70 @@ double square_root(double number)
         // (on second iteration = 65)
         // and so on
         temp = sqt;
-	
-	sqt = (n / 2*temp)/2;
+
+	sqt = (number / 2*temp)/2;
         // Then, replace values (256 / 128)
     }
-    return sqt;	
+    return sqt;
 }
 //Function to check whether the dam and its surrounding area is safe from flooding
 
 void cond(int check, int flag, int y)
-
 {
-    int chfl = check + flag; 
-    if((chfl)==2)
-    {
-        FILE *file;
-        file = fopen("records.txt", "a");
-	    
-        printf("\nAt time t= %d hours \nSignal = RED", y);
-        printf("\n\nAlert!!The dam and its surrounding areas are on the verge of flooding."
-               "\nSo kindly evacuate the people from the surrounding areas and move them them to higher grounds until futher adviced.");
-	protocol_1();
-	    
-        fprintf(file, "\nAt time t=%d hours \nSignal=RED", y);
-        fprintf(file, "\nAlert!!The dam and its surrounding areas are on the verge of flooding."
-                "\nSo kindly evacuate the people from the surrounding areas and move them them to higher grounds until futher adviced.");
-	    
-        fclose(file);
-    }
-	
-    else if((chfl)==1)
-    {
-        FILE *file;
-        file = fopen("records.txt", "a");
-	    
-        printf("\nAt time t= %d hours \nSignal = ORANGE", y);
-        printf("\n\nThe dam and its surrounding areas are at high risk of flooding."
-               "\nSo kindly take the necessary steps required");
-	protocol_2();    
-	    
-        fprintf(file, "\nAt time t = %d hours \nSignal = ORANGE", y);
-        fprintf(file, "\n\nThe dam and its surrounding areas are at high risk of flooding."
-                "\nSo kindly take the necessary steps required");
-	    
-        fclose(file);
-    }
-	
-    else if((chfl)==0)
-    {
-        FILE *file;
-        file = fopen("records.txt", "a");
-	    
-        printf("\nAt time t= %d hours \nSignal = GREEN", y);
-        printf("\n\nThe dam and its surrounding area is safe from flooding now and no need to evacuate the people"
-	       "from neighbouring areas."
-               "\nNo need to panic.");
-	    
-        fprintf(file, "\nAt time t = %d hours \nSignal = GREEN", y);
-        fprintf(file, "\n\nThe dam and its surrounding area is safe from flooding now and no need to evacuate the people"
-		"from neighbouring areas"
-                "\nNo need to panic");
-	    
-        fclose(file);
-	    
-        exit(0);
-    }
+    int chfl = check + flag;
+    if((chfl) == 2)
+    {
+            FILE *file;
+            file = fopen("records.txt", "a");
+
+            printf("\nAt time t= %d hours \nSignal = RED", y);
+            printf("\n\nAlert!!The dam and its surrounding areas are on the verge of flooding."
+                    "\nSo kindly evacuate the people from the surrounding areas and move them them to higher grounds until futher adviced.");
+            protocol_1();
+
+            fprintf(file, "\nAt time t=%d hours \nSignal=RED", y);
+            fprintf(file, "\nAlert!!The dam and its surrounding areas are on the verge of flooding."
+                    "\nSo kindly evacuate the people from the surrounding areas and move them them to higher grounds until futher adviced.");
+
+            fclose(file);
+    }
+
+    else if((chfl)==1)
+    {
+        FILE *file;
+        file = fopen("records.txt", "a");
+
+        printf("\nAt time t= %d hours \nSignal = ORANGE", y);
+        printf("\n\nThe dam and its surrounding areas are at high risk of flooding."
+                "\nSo kindly take the necessary steps required");
+        protocol_2();
+
+        fprintf(file, "\nAt time t = %d hours \nSignal = ORANGE", y);
+        fprintf(file, "\n\nThe dam and its surrounding areas are at high risk of flooding."
+                "\nSo kindly take the necessary steps required");
+
+        fclose(file);
+    }
+
+    else if((chfl)==0)
+    {
+        FILE *file;
+        file = fopen("records.txt", "a");
+
+        printf("\nAt time t= %d hours \nSignal = GREEN", y);
+        printf("\n\nThe dam and its surrounding area is safe from flooding now and no need to evacuate the people "
+                "from neighbouring areas."
+                "\nNo need to panic.");
+
+        fprintf(file, "\nAt time t = %d hours \nSignal = GREEN", y);
+        fprintf(file, "\n\nThe dam and its surrounding area is safe from flooding now and no need to evacuate the people "
+                "from neighbouring areas"
+                "\nNo need to panic");
+
+        fclose(file);
+
+        exit(0);
+    }
 }
 
 //Function to check if the dam capacity is below the threshold capacity
@@ -147,9 +146,9 @@ void cond(int check, int flag, int y)
 int capacity(m dam)
 {
     double cap = dam.lat_area*dam.water_level;
-	
+
     if(cap>dam.threshold)
-    {	    
+    {
         return 1;
     }
     else
@@ -172,12 +171,12 @@ double calculate(m dam, double shut_height)
 int decision(m dam, double flow_out)
 {
     double dh = (dam.flow_in - flow_out)/dam.lat_area;
-	
+
     if(dh > dam.init_height)
-    {	    
+    {
         return 1;
     }
-	
+
     else
     {
         return 0;
@@ -191,8 +190,8 @@ void file_print_struct(m dam, int n)
     FILE *fptr;
 
     //Opening the file called 'records'
-    fptr = fopen("records.txt","a");   
-	
+    fptr = fopen("records.txt","a");
+
     //Printing all necessary information in the "records" file
 
     fprintf(fptr, "\t\t\t\t\t\tReport\n\n");
@@ -208,7 +207,7 @@ void file_print_struct(m dam, int n)
     fprintf(fptr, "\n\nThe water level in the dam in SI units : %lf", dam.water_level);
 
     //Closing the file
-    fclose(fptr);                            
+    fclose(fptr);
 }
 
 //Main function
@@ -270,20 +269,20 @@ int main()
             if(check==0 && flag==0 && y!=0)                     //Checking if signal is GREEN
                 {
                     FILE *file;
-                    
+
                     file = fopen("records.txt", "a");           //Opening the file called 'records'
-                    
+
                     printf("\nAt time t = %d hours \nSignal = GREEN", y);
-                    printf("\nThe dam and its surrounding area is safe from flooding now and no need to evacuate the people"
-			   "from neighbouring areas."
-			   "\nAnd no need to panic.");
+                    printf("\nThe dam and its surrounding area is safe from flooding now and no need to evacuate the people "
+			               "from neighbouring areas."
+			               "\nAnd no need to panic.");
                     fprintf(file, "\nAt time t=%d hours signal=GREEN", y);
-                    fprintf(file, "\nThe dam and its surrounding area is safe from flooding now and no need to evacuate the people"
-			    "from neighbouring areas."
-			    "And no need to panic");
-                    
+                    fprintf(file, "\nThe dam and its surrounding area is safe from flooding now and no need to evacuate the people "
+			                "from neighbouring areas. "
+			                "And no need to panic");
+
                     fclose(file);                               //Closing the file
-                    
+
                     exit(0);
                 }
 
@@ -297,19 +296,19 @@ int main()
                            printf("\n\n1.Continue the program.");                       //Menu
                            printf("\n2.Exit the program immediately.");
                            printf("\n\nEnter any one of the above values: ");
-                           
+
                            scanf("%d",&num);
-                           
+
                            if(num == 2)
                            {
-                               fprintf(file,"\n\nProgram finished.");
-                               fclose(file);
-                               exit(0);                                                 //Exiting the program 
-                           }    
+                               fprintf(ftr,"\n\nProgram finished.");
+                               fclose(ftr);
+                               exit(0);                                                 //Exiting the program
+                           }
                            else
                            {
-                               printf("\n\nEnter the amount by which the shutter in the dam is to be risen: ");     
-                               scanf("%lf",&shut_height);                               //Input for shutter height 
+                               printf("\n\nEnter the amount by which the shutter in the dam is to be risen: ");
+                               scanf("%lf",&shut_height);                               //Input for shutter height
 
 
                                fprintf(ftr,"\n\nEnter the amount by which the shutter in the dam is to be risen: %lf",shut_height);
@@ -322,9 +321,9 @@ int main()
 
                                fprintf(ftr,"\nEnter the current water level in the dam in SI units: %lf\n\n",dam[i].water_level);
 
-                               //Checking the capacity 
+                               //Checking the capacity
                                check = capacity(dam[i]);
-                               
+
                                //Getting the decision required
                                flag = decision(dam[i], flow_out);
 
