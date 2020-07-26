@@ -112,12 +112,12 @@ void cond(int check, int flag, int y, int i)
             FILE *file;
             file = fopen("records.txt", "a");
 
-            printf("\nAt time t= %d minutes \nSignal = RED", i);
+            printf("\nAt time t= %d seconds  \nSignal = RED", i);
             printf("\n\nAlert!!The dam and its surrounding areas are on the verge of flooding."
                     "\nSo kindly evacuate the people from the surrounding areas and move them them to higher grounds until futher adviced.\n");
             protocol_1();
 
-            fprintf(file, "\nAt time t = %d minutes \nSignal = RED", i);
+            fprintf(file, "\nAt time t = %d seconds \nSignal = RED", i);
             fprintf(file, "\nAlert!!The dam and its surrounding areas are on the verge of flooding."
                     "\nSo kindly evacuate the people from the surrounding areas and move them them to higher grounds until futher adviced.\n");
 
@@ -129,12 +129,12 @@ void cond(int check, int flag, int y, int i)
         FILE *file;
         file = fopen("records.txt", "a");
 
-        printf("\nAt time t= %d minutes \nSignal = ORANGE", i);
+        printf("\nAt time t= %d seconds \nSignal = ORANGE", i);
         printf("\n\nThe dam and its surrounding areas are at high risk of flooding."
                 "\nSo kindly take the necessary steps required\n");
         protocol_2();
 
-        fprintf(file, "\nAt time t = %d minutes \nSignal = ORANGE", i);
+        fprintf(file, "\nAt time t = %d seconds \nSignal = ORANGE", i);
         fprintf(file, "\n\nThe dam and its surrounding areas are at high risk of flooding."
                 "\nSo kindly take the necessary steps required\n");
 
@@ -146,12 +146,12 @@ void cond(int check, int flag, int y, int i)
         FILE *file;
         file = fopen("records.txt", "a");
 
-        printf("\nAt time t = %d minutes \nSignal = GREEN", i);
+        printf("\nAt time t = %d seconds \nSignal = GREEN", i);
         printf("\n\nThe dam and its surrounding area is safe from flooding now and no need to evacuate the people "
                 "from neighbouring areas."
                 "\nNo need to panic.\n");
 
-        fprintf(file, "\nAt time t = %d minutes \nSignal = GREEN", i);
+        fprintf(file, "\nAt time t = %d seconds \nSignal = GREEN", i);
         fprintf(file, "\n\nThe dam and its surrounding area is safe from flooding now and no need to evacuate the people "
                 "from neighbouring areas"
                 "\nNo need to panic\n");
@@ -168,7 +168,7 @@ int capacity(m dam)
 {
     double cap = dam.lat_area*dam.water_level;
 
-    printf("cap is %lf : dam threshold is %lf \n ",cap, dam.threshold);
+   
     if(cap>dam.threshold)
     {
         return 1;
@@ -185,7 +185,7 @@ double calculate(m dam, double shut_height)
 {
     double velocity = square_root((2*g*shut_height));
     double area = dam.width * shut_height;
-    printf("test_velocity: %lf, velocity : %lf, area : %lf, calculate : %lf\n",2*g*shut_height, velocity, area, area*velocity);
+   
     return (area * velocity);
 }
 
@@ -195,7 +195,7 @@ int decision(m dam, double flow_out)
 {
     double dh = (dam.flow_in - flow_out)/dam.lat_area;
     
-    printf("flow_out is %lf, dh is %lf, dam.init_height is %lf\n",flow_out, dh, dam.init_height);
+   
 
     if(dh > dam.init_height)
     {
@@ -373,8 +373,9 @@ int main()
         check = capacity(dam[i]);
         flag = decision(dam[i], flow_out);
         cond(check, flag, y, i);
-        y = y + 1;
-        sleep(1);
+        y++;
+        sleep(0.5);
+
 	    while(2)
         {
             if(check==0 && flag==0 && y!=0)                     //Checking if signal is GREEN
@@ -383,11 +384,11 @@ int main()
 
                     file = fopen("records.txt", "a");           //Opening the file called 'records'
 
-                    printf("\nAt time t = %d minutes \nSignal = GREEN", i);
+                    printf("\nAt time t = %d seconds \nSignal = GREEN", i);
                     printf("\nThe dam and its surrounding area is safe from flooding now and no need to evacuate the people "
 			               "from neighbouring areas."
 			               "\nAnd no need to panic.\n");
-                    fprintf(file, "\nAt time t = %d minutes signal = GREEN", i);
+                    fprintf(file, "\nAt time t = %d seconds signal = GREEN", i);
                     fprintf(file, "\nThe dam and its surrounding area is safe from flooding now and no need to evacuate the people "
 			                "from neighbouring areas. "
 			                "And no need to panic\n");
@@ -421,14 +422,7 @@ int main()
 
                                fprintf(ftr2,"\n\nThe amount by which the shutter in the dam has to be risen is : %lf",shut_height);
 
-                               //Checking the capacity
-                               check = capacity(dam[i]);
-
-                               //Getting the decision required
-                               flag = decision(dam[i], flow_out);
-
-                               cond(check, flag, y, i);
-                               y = y + 1;
+                               
 
                                fclose(ftr2);                             //Closing the file
                             }
